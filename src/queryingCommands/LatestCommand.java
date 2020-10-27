@@ -1,4 +1,4 @@
-package core.queryingCommands;
+package queryingCommands;
 
 import core.StateNode;
 
@@ -14,11 +14,12 @@ public class LatestCommand implements QCommand{
 
     @Override
     public String execute() {
+        StateNode currentNode = mySwitch.getCurrentNode();
         ArrayList<StateNode> stateNodesList = mySwitch.getStateNodesList();
-        int length = stateNodesList.size();
+        int length = stateNodesList.indexOf(currentNode);//there is a head in arrayList
         operator = Math.min(length, operator);
         for (int i = 1; i <= operator; i++)
-            System.out.println(i + " " + stateNodesList.get(length - i).getCommand().toString());
+            System.out.println(i + " " + stateNodesList.get(length - i + 1).getCommand().toString());
         return "";
     }
 }

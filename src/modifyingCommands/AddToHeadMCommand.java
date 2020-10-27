@@ -1,4 +1,4 @@
-package core.modifyingCommands;
+package modifyingCommands;
 
 public class AddToHeadMCommand implements MCommand {
     private String operator;

@@ -1,4 +1,4 @@
-package core.modifyingCommands;
+package modifyingCommands;
 
 public class AddToTailMCommand implements MCommand {
     private String operator;

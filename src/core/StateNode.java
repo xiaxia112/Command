@@ -1,7 +1,5 @@
 package core;
 
-import core.modifyingCommands.MCommand;
-
 public class StateNode {
     private String strState;
     private Command command;

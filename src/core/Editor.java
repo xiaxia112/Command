@@ -1,6 +1,7 @@
 package core;
 
 public class Editor {
+
     private StringBuffer s;
 
     public Editor() {
@@ -39,5 +40,10 @@ public class Editor {
     public void displayS() {
         System.out.println(s);
     }
+
+    public void setS(String s) {
+        this.s = new StringBuffer(s);
+    }
+
 
 }
