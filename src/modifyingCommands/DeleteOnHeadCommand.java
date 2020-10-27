@@ -1,6 +1,6 @@
 package modifyingCommands;
 
-public class DeleteOnTail implements MCommand {
+public class DeleteOnHeadCommand implements MCommand {
     private int operator;
 
     public void setOperator(String operator) {
@@ -9,11 +9,12 @@ public class DeleteOnTail implements MCommand {
 
     @Override
     public String execute() {
-        return editor.deleteOnTail(operator);
+        return editor.deleteOnHead(operator);
     }
 
     @Override
     public String toString() {
-        return "D " + operator;
+        return "d " + operator;
     }
+
 }

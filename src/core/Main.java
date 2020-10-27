@@ -12,11 +12,12 @@ public class Main {
         mySwitch = new core.Switch();
         mySwitch.registerCommand("A", new AddToTailMCommand());
         mySwitch.registerCommand("a", new AddToHeadMCommand());
-        mySwitch.registerCommand("D", new DeleteOnTail());
-        mySwitch.registerCommand("d", new DeleteOnHead());
+        mySwitch.registerCommand("D", new DeleteOnTailCommand());
+        mySwitch.registerCommand("d", new DeleteOnHeadCommand());
 
         mySwitch.registerCommand("l", new LatestCommand());
         mySwitch.registerCommand("u", new UndoCommand());
+        mySwitch.registerCommand("r", new RedoCommand());
 
         Scanner scanner = new Scanner(System.in);
         String instruction;

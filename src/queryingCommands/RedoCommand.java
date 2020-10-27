@@ -3,12 +3,13 @@ package queryingCommands;
 import core.StateNode;
 import modifyingCommands.MCommand;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static core.Main.mySwitch;
 
-public class UndoCommand implements QCommand {
+public class RedoCommand implements QCommand{
     @Override
     public void setOperator(String instruction) {
         //Empty Body
@@ -17,12 +18,15 @@ public class UndoCommand implements QCommand {
     @Override
     public String execute() {
         StateNode currentNode = mySwitch.getCurrentNode();
+        ArrayList<StateNode> stateNodesList = mySwitch.getStateNodesList();
+        //it contains a head
+        int length = stateNodesList.size() - 1;
         int index = mySwitch.getStateNodesList().indexOf(currentNode);
 
-        if (index == 0)
-            Logger.getLogger(UndoCommand.class.getName()).log(Level.INFO, "No command to undo");
+        if (index == length - 1)
+            Logger.getLogger(UndoCommand.class.getName()).log(Level.INFO, "No command to redo");
         else {
-            currentNode = mySwitch.getStateNodesList().get(index - 1);
+            currentNode = mySwitch.getStateNodesList().get(index + 1);
 
             mySwitch.setCurrentNode(currentNode);
 
@@ -30,7 +34,6 @@ public class UndoCommand implements QCommand {
             MCommand.editor.setS(currentStr);
             System.out.println(currentStr);
         }
-
         return "";
     }
 }

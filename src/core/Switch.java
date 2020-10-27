@@ -17,7 +17,7 @@ public class Switch {
     private final HashMap<String, Command> commandMap = new HashMap<>();
     public static final Editor editor = new Editor();
 
-    public Switch() {
+    public Switch() {//TODO Caution! the arrayList contains a security head.
         stateNodesList.add(new StateNode("", new UndoCommand()));
     }
 
@@ -31,15 +31,13 @@ public class Switch {
 
     public void execute(String instruction) {
         String[] instructions = instruction.split(" ");
-
         Command command = commandMap.get(instructions[0]);
-
         if(null == command) {
             Logger.getLogger(Switch.class.getName()).log(
                    Level.WARNING ,"NO command registered for " + instructions[0]);
             return;
         }
-        //TODO u, r and m
+        //TODO r and m
         if (instructions.length > 1)
             command.setOperator(instructions[1]);
 
@@ -54,7 +52,6 @@ public class Switch {
     public ArrayList<StateNode> getStateNodesList() {
         return stateNodesList;
     }
-
 
     public StateNode getCurrentNode() {
         return currentNode;
