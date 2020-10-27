@@ -1,6 +1,6 @@
 package core;
 
-import Commands.Command;
+import core.modifyingCommands.MCommand;
 
 public class StateNode {
     private String strState;

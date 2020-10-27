@@ -11,25 +11,29 @@ public class Editor {
         s = new StringBuffer(init.trim());
     }
 
-    public void addToHead(String content) {
+    public String addToHead(String content) {
         s.insert(0, content);
         displayS();
+        return String.valueOf(s);
     }
 
-    public void addToTail(String content) {
+    public String addToTail(String content) {
         s.append(content);
         displayS();
+        return String.valueOf(s);
     }
 
-    public void deleteOnHead(int length) {
+    public String deleteOnHead(int length) {
         s.delete(0, length);
         displayS();
+        return String.valueOf(s);
     }
 
-    public void deleteOnTail(int length) {
+    public String deleteOnTail(int length) {
         length = Math.min(length, s.length());
         s.delete(s.length() - length, s.length());
         displayS();
+        return String.valueOf(s);
     }
 
     public void displayS() {

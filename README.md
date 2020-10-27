@@ -1,2 +1,2 @@
 # Command
-A simple text editor by command pattern
+A simple text editor by QCommand pattern
