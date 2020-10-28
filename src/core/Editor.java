@@ -2,6 +2,10 @@ package core;
 
 public class Editor {
 
+    public String getS() {
+        return s.toString();
+    }
+
     private StringBuffer s;
 
     public Editor() {
@@ -9,31 +13,31 @@ public class Editor {
     }
 
     public Editor(String init) {
-        s = new StringBuffer(init.trim());
+        s = new StringBuffer(init);
     }
 
     public String addToHead(String content) {
         s.insert(0, content);
-        displayS();
+//        displayS();
         return String.valueOf(s);
     }
 
     public String addToTail(String content) {
         s.append(content);
-        displayS();
+//        displayS();
         return String.valueOf(s);
     }
 
     public String deleteOnHead(int length) {
         s.delete(0, length);
-        displayS();
+//        displayS();
         return String.valueOf(s);
     }
 
     public String deleteOnTail(int length) {
         length = Math.min(length, s.length());
         s.delete(s.length() - length, s.length());
-        displayS();
+//        displayS();
         return String.valueOf(s);
     }
 

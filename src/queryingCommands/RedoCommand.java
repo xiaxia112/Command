@@ -23,7 +23,7 @@ public class RedoCommand implements QCommand{
         int length = stateNodesList.size() - 1;
         int index = mySwitch.getStateNodesList().indexOf(currentNode);
 
-        if (index == length - 1)
+        if (index == length)
             Logger.getLogger(UndoCommand.class.getName()).log(Level.INFO, "No command to redo");
         else {
             currentNode = mySwitch.getStateNodesList().get(index + 1);

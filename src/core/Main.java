@@ -1,7 +1,13 @@
 package core;
 
-import modifyingCommands.*;
-import queryingCommands.*;
+import modifyingCommands.AddToHeadMCommand;
+import modifyingCommands.AddToTailMCommand;
+import modifyingCommands.DeleteOnHeadCommand;
+import modifyingCommands.DeleteOnTailCommand;
+import queryingCommands.LatestCommand;
+import queryingCommands.MergeCommand;
+import queryingCommands.RedoCommand;
+import queryingCommands.UndoCommand;
 
 import java.util.Scanner;
 
@@ -18,6 +24,7 @@ public class Main {
         mySwitch.registerCommand("l", new LatestCommand());
         mySwitch.registerCommand("u", new UndoCommand());
         mySwitch.registerCommand("r", new RedoCommand());
+        mySwitch.registerCommand("m", new MergeCommand());
 
         Scanner scanner = new Scanner(System.in);
         String instruction;
