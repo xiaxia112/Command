@@ -1,0 +1,74 @@
+@startuml
+
+namespace core{
+    class Editor {
+        - StringBuffer s
+    }
+
+    class Main {
+        + Switch mySwitch
+    }
+
+    class StateNode{
+        - String strState;
+        - Command command;
+    }
+
+    class Switch{
+        - HashMap<String, Command> commandMap
+        - ArrayList<StateNode> stateNodesList
+        - StateNode currentNode
+        + Editor editor
+
+        registerCommand(String commandName, Command Command)
+        execute(String instruction)
+    }
+
+    interface Command {
+        + void setOperator(String instruction)
+        + String execute()
+    }
+
+    Main --> Switch
+    Switch --> StateNode
+    Switch *-- Editor
+    Switch --> Command
+    StateNode *-- Command
+}
+
+
+namespace queryingCommands {
+    interface QCommand
+    class LatestCommand
+    class MergeCommand
+    class RedoCommand
+    class UndoCommand
+
+    QCommand <|.. LatestCommand
+    QCommand <|.. MergeCommand
+    QCommand <|.. RedoCommand
+    QCommand <|.. UndoCommand
+}
+
+namespace modifyingCommands{
+    interface MCommand
+    class AddToHeadCommand
+    class AddToTailCommand
+    class DeleteOnHeadCommand
+    class DeleteOnTailCommand
+    class MacroCommand
+
+    MCommand <|.. AddToHeadCommand
+    MCommand <|.. AddToTailCommand
+    MCommand <|.. DeleteOnHeadCommand
+    MCommand <|.. DeleteOnTailCommand
+    MCommand <|.. MacroCommand
+}
+
+core.Command <|-- queryingCommands.QCommand
+core.Command <|-- modifyingCommands.MCommand
+queryingCommands.QCommand --> core.Switch
+
+
+
+@enduml
